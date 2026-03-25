@@ -1,0 +1,44 @@
+Arquitectura por capas
+
+├── Controllers/
+├── Services/
+├── Repositories/
+├── Models/
+├── DTOs/
+├── Data/
+├── Extensions/
+├── Middleware/
+├── Enums/
+└── Program.cs
+
+sistema clásico de autorización por Roles y Permisos (RBAC)   ------------------> implementado
+
+RBAC + Claims + Policies dinámicas ------------------> implementado
+
+Rate limiting ------------------> implementado
+
+
+
++--------------------+
+|     Front-End      |  ← Cliente (Web, App móvil)
++--------------------+
+           │
+           ▼
++--------------------+
+|   Controller/API   |  ← Recibe solicitudes HTTP
++--------------------+
+           │
+           ▼
++--------------------+
+|      Service       |  ← Lógica de negocio, reglas, orquestación
++--------------------+
+           │
+           ▼
++--------------------+
+|    Repository      |  ← Acceso a la base de datos, CRUD real
++--------------------+
+           │
+           ▼
++--------------------+
+|   Base de Datos    |  ← PostgreSQL
++--------------------+

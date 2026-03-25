@@ -1,0 +1,368 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Backend-Gimnacio</name>
+    </assembly>
+    <members>
+        <member name="M:Backend_Gimnacio.Controllers.V1.AsistenciaController.AddAsync(Backend_Gimnacio.Dtos.AsistenciaCreateDto)">
+            <summary>
+            Registra una nueva asistencia en el sistema.
+            </summary>
+            <remarks>
+            Este endpoint permite registrar el ingreso de un cliente al gimnasio
+            mediante una suscripción válida y el usuario que realiza el registro.
+            </remarks>
+            <param name="dto">
+            Objeto que contiene:
+            - SuscripcionId: ID de la suscripción del cliente.
+            - RegistradoPorId: ID del usuario que registra la asistencia.
+            </param>
+            <returns>Asistencia creada correctamente.</returns>
+            <response code="201">Asistencia registrada exitosamente.</response>
+            <response code="400">Datos inválidos en la solicitud.</response>
+        </member>
+        <member name="M:Backend_Gimnacio.Controllers.V1.ClienteController.#ctor(Microsoft.Extensions.Logging.ILogger{Backend_Gimnacio.Controllers.V1.ClienteController},Backend_Gimnacio.Services.ClienteServices.IClienteService)">
+            Constructor del controlador de clientes.
+        </member>
+        <member name="M:Backend_Gimnacio.Controllers.V1.MembresiaController.#ctor(Microsoft.Extensions.Logging.ILogger{Backend_Gimnacio.Controllers.V1.MembresiaController},Backend_Gimnacio.Services.MembresiaServices.IMembresiaService)">
+            Constructor del controlador de permisos.
+        </member>
+        <member name="M:Backend_Gimnacio.Controllers.V1.MembresiaController.GetMembresias">
+            <summary>
+            Obtiene todas los membresias registradas en el sistema.
+            </summary>       
+            <response code="200">Lista obtenida correctamente.</response>
+        </member>
+        <member name="M:Backend_Gimnacio.Controllers.V1.MembresiaController.GetMembresia(System.Int32)">
+            <summary>
+            Obtiene una menbresia específica mediante su identificador.
+            </summary>
+            <param name="id">Identificador único de la membresia.</param>      
+            <response code="200">Permiso encontrado.</response>
+            <response code="404">Permiso no encontrado.</response>
+        </member>
+        <member name="M:Backend_Gimnacio.Controllers.V1.MembresiaController.CreateMembresia(Backend_Gimnacio.Dtos.MembresiaCreateDto)">
+            <summary>
+            Registra una nueva membresia en el sistema.
+            </summary>     
+            <param name="createMembresiaDto">Datos necesarios para crear la membresia.</param>       
+            <response code="201">Membresia creada correctamente.</response>
+            <response code="400">Solicitud inválida.</response>
+        </member>
+        <member name="T:Backend_Gimnacio.Controllers.V1.PagoController">
+            <summary>
+            Controlador para la gestión de pagos del gimnasio.
+            Permite consultar, registrar, actualizar y eliminar pagos.
+            </summary>
+        </member>
+        <member name="M:Backend_Gimnacio.Controllers.V1.PagoController.#ctor(Backend_Gimnacio.Services.PagoService.IPagoService,Microsoft.Extensions.Logging.ILogger{Backend_Gimnacio.Controllers.V1.PagoController})">
+            <summary>
+            Constructor del controlador de pagos.
+            </summary>
+            <param name="pagoService">Servicio de lógica de pagos.</param>
+            <param name="logger">Servicio de logging.</param>
+        </member>
+        <member name="M:Backend_Gimnacio.Controllers.V1.PagoController.GetAllAsync">
+            <summary>
+            Obtiene la lista de todos los pagos registrados.
+            </summary>
+            <returns>Lista de pagos.</returns>
+            <response code="200">Retorna la lista de pagos.</response>
+        </member>
+        <member name="M:Backend_Gimnacio.Controllers.V1.PagoController.GetById(System.Int32)">
+            <summary>
+            Obtiene un pago por su identificador.
+            </summary>
+            <param name="id">ID del pago.</param>
+            <returns>Pago encontrado.</returns>
+            <response code="200">Pago encontrado.</response>
+            <response code="404">Pago no encontrado.</response>
+        </member>
+        <member name="M:Backend_Gimnacio.Controllers.V1.PagoController.AddAsync(Backend_Gimnacio.Dtos.PagoCreateDto)">
+            <summary>
+            Registra un nuevo pago en el sistema.
+            </summary>
+            <param name="dto">Datos del pago a registrar.</param>
+            <returns>Pago creado.</returns>
+            <response code="201">Pago creado correctamente.</response>
+            <response code="400">Datos inválidos.</response>
+        </member>
+        <member name="M:Backend_Gimnacio.Controllers.V1.PagoController.UpdateEstado(System.Int32,Backend_Gimnacio.Dtos.PagoUpdateDto)">
+            <summary>
+            Actualiza el estado de un pago.
+            </summary>
+            <param name="id">ID del pago.</param>
+            <param name="dto">Nuevo estado del pago.</param>
+            <returns>Pago actualizado.</returns>
+            <response code="200">Estado actualizado correctamente.</response>
+            <response code="400">Error en la solicitud.</response>
+            <response code="404">Pago no encontrado.</response>
+        </member>
+        <member name="M:Backend_Gimnacio.Controllers.V1.PagoController.Delete(System.Int32)">
+            <summary>
+            Elimina un pago del sistema.
+            </summary>
+            <param name="id">ID del pago.</param>
+            <returns>No retorna contenido.</returns>
+            <response code="204">Pago eliminado correctamente.</response>
+            <response code="404">Pago no encontrado.</response>
+        </member>
+        <member name="M:Backend_Gimnacio.Controllers.V1.PagoController.GetMetodosPago">
+            <summary>
+            Metodos de Pago
+            </summary>
+        </member>
+        <member name="M:Backend_Gimnacio.Controllers.V1.PermisosController.#ctor(Microsoft.Extensions.Logging.ILogger{Backend_Gimnacio.Controllers.V1.PermisosController},Backend_Gimnacio.Services.PermisosServices.IPermisosService)">
+            <summary>
+            Constructor del controlador de permisos.
+            </summary>
+        </member>
+        <member name="M:Backend_Gimnacio.Controllers.V1.PermisosController.GetPermisos">
+            <summary>
+            Obtiene todos los permisos registrados en el sistema.
+            </summary>       
+            <response code="200">Lista obtenida correctamente.</response>
+        </member>
+        <member name="M:Backend_Gimnacio.Controllers.V1.PermisosController.CreatePermiso(Backend_Gimnacio.Dtos.PermisoCreateDto)">
+            <summary>
+            Registra un nuevo permiso en el sistema.
+            </summary>     
+            <param name="createPermisoDto">Datos necesarios para crear el permiso.</param>       
+            <response code="201">Permiso creado correctamente.</response>
+            <response code="400">Solicitud inválida.</response>
+        </member>
+        <member name="M:Backend_Gimnacio.Controllers.V1.PermisosController.GetPermiso(System.Int32)">
+            <summary>
+            Obtiene un permiso específico mediante su identificador.
+            </summary>
+            <param name="id">Identificador único del permiso.</param>      
+            <response code="200">Permiso encontrado.</response>
+            <response code="404">Permiso no encontrado.</response>
+        </member>
+        <member name="M:Backend_Gimnacio.Controllers.V1.UsuarioController.#ctor(Microsoft.Extensions.Logging.ILogger{Backend_Gimnacio.Controllers.V1.UsuarioController},Backend_Gimnacio.Services.UsuarioService.IUsuarioService)">
+            Constructor del controlador de usuarios.    
+        </member>
+        <member name="M:Backend_Gimnacio.Controllers.EmpleadoController.#ctor(Microsoft.Extensions.Logging.ILogger{Backend_Gimnacio.Controllers.EmpleadoController},Backend_Gimnacio.Services.EmpleadoService.IEmpleadoService)">
+            Constructor del controlador de empleados.   
+        </member>
+        <member name="M:Backend_Gimnacio.Controllers.LoginController.Login(Backend_Gimnacio.Dtos.LoginRequestDto)">
+            <summary>
+            Iniciar sesión con usuario y contraseña.
+            </summary>
+            <param name="loginDto">DTO con username y password</param>
+            <returns>Usuario con token JWT válido hasta las 22:00</returns>
+        </member>
+        <member name="M:Backend_Gimnacio.Controllers.SuscripcionController.#ctor(Microsoft.Extensions.Logging.ILogger{Backend_Gimnacio.Controllers.SuscripcionController},Backend_Gimnacio.Services.SuscripcionService.ISuscripcionService)">
+            Constructor del controlador de permisos.
+        </member>
+        <member name="M:Backend_Gimnacio.Controllers.SuscripcionController.GetById(System.Int32)">
+            <summary>
+             buscar por id alguna suscripcion
+            </summary>    
+            
+        </member>
+        <member name="M:Backend_Gimnacio.Controllers.SuscripcionController.GetAllSuscripcionesAsync(System.Int32)">
+            <summary>
+             Se debe pasr el id del cliente para que vote todos los suscripciones activas
+            </summary>    
+        </member>
+        <member name="P:Backend_Gimnacio.Dtos.ClienteCreateDto.Nombre">
+            <example>Kevin</example>
+        </member>
+        <member name="P:Backend_Gimnacio.Dtos.ClienteCreateDto.AP">
+            <example>Torrez</example>
+        </member>
+        <member name="P:Backend_Gimnacio.Dtos.ClienteCreateDto.AM">
+            <example>Pillco</example>
+        </member>
+        <member name="P:Backend_Gimnacio.Dtos.ClienteCreateDto.CI">
+            <example>12780872</example>
+        </member>
+        <member name="P:Backend_Gimnacio.Dtos.ClienteCreateDto.Celular">
+            <example>63945700</example>
+        </member>
+        <member name="P:Backend_Gimnacio.Dtos.EmpleadoCreateDto.Nombre">
+            <example>Juan</example>
+        </member>
+        <member name="P:Backend_Gimnacio.Dtos.EmpleadoCreateDto.AP">
+            <example>Pérez</example>
+        </member>
+        <member name="P:Backend_Gimnacio.Dtos.EmpleadoCreateDto.AM">
+            <example>Gómez</example>
+        </member>
+        <member name="P:Backend_Gimnacio.Dtos.EmpleadoCreateDto.Celular">
+            <example>77712345</example>
+        </member>
+        <member name="P:Backend_Gimnacio.Dtos.MembresiaCreateDto.Nombre">
+            <example>Plan Semanal</example>
+        </member>
+        <member name="P:Backend_Gimnacio.Dtos.MembresiaCreateDto.Descripcion">
+            <example>Acceso completo al gimnasio</example>
+        </member>
+        <member name="P:Backend_Gimnacio.Dtos.MembresiaCreateDto.DuracionDias">
+            <example>7</example>
+        </member>
+        <member name="P:Backend_Gimnacio.Dtos.MembresiaCreateDto.TipoPlan">
+            <example>Semanal</example>
+        </member>
+        <member name="P:Backend_Gimnacio.Dtos.MembresiaCreateDto.Precio">
+            <example>30</example>
+        </member>
+        <member name="P:Backend_Gimnacio.Dtos.PermisoCreateDto.Nombre">
+            <example>usuarios.ver</example>
+        </member>
+        <member name="P:Backend_Gimnacio.Dtos.PermisoCreateDto.Descripcion">
+            <example>Permite visualizar la lista de usuarios del sistema</example>
+        </member>
+        <member name="P:Backend_Gimnacio.Dtos.UsuarioCreateDto.EmpleadoId">
+            <example>1</example>
+        </member>
+        <member name="P:Backend_Gimnacio.Dtos.UsuarioCreateDto.RolId">
+            <example>2</example>
+        </member>
+        <member name="P:Backend_Gimnacio.Dtos.UsuarioCreateDto.Username">
+            <example>juan123</example>
+        </member>
+        <member name="P:Backend_Gimnacio.Dtos.UsuarioCreateDto.Password">
+            <example>123456</example>
+        </member>
+        <member name="T:Backend_Gimnacio.Mappers.EmpleadoMapper">
+            Mapper profesional para convertir entre Empleado y sus DTOs.
+        </member>
+        <member name="M:Backend_Gimnacio.Mappers.EmpleadoMapper.ToResponseDto(Backend_Gimnacio.Models.Empleado)">
+            Convierte una entidad Empleado a EmpleadoResponseDto.
+        </member>
+        <member name="M:Backend_Gimnacio.Mappers.EmpleadoMapper.ToEntity(Backend_Gimnacio.Dtos.EmpleadoCreateDto)">
+            Convierte un EmpleadoCreateDto a entidad Empleado.
+        </member>
+        <member name="M:Backend_Gimnacio.Mappers.EmpleadoMapper.UpdateEntity(Backend_Gimnacio.Models.Empleado,Backend_Gimnacio.Dtos.EmpleadoUpdateDto)">
+            Actualiza una entidad existente con datos del DTO.
+        </member>
+        <member name="T:Backend_Gimnacio.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:Backend_Gimnacio.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Backend_Gimnacio.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Backend_Gimnacio.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Backend_Gimnacio.Migrations.RolesPermisos">
+            <inheritdoc />
+        </member>
+        <member name="M:Backend_Gimnacio.Migrations.RolesPermisos.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Backend_Gimnacio.Migrations.RolesPermisos.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Backend_Gimnacio.Migrations.RolesPermisos.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Backend_Gimnacio.Migrations.AddEmpleado">
+            <inheritdoc />
+        </member>
+        <member name="M:Backend_Gimnacio.Migrations.AddEmpleado.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Backend_Gimnacio.Migrations.AddEmpleado.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Backend_Gimnacio.Migrations.AddEmpleado.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Backend_Gimnacio.Migrations.AddUsuario">
+            <inheritdoc />
+        </member>
+        <member name="M:Backend_Gimnacio.Migrations.AddUsuario.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Backend_Gimnacio.Migrations.AddUsuario.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Backend_Gimnacio.Migrations.AddUsuario.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Backend_Gimnacio.Migrations.DeletePasswordSaltUusario">
+            <inheritdoc />
+        </member>
+        <member name="M:Backend_Gimnacio.Migrations.DeletePasswordSaltUusario.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Backend_Gimnacio.Migrations.DeletePasswordSaltUusario.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Backend_Gimnacio.Migrations.DeletePasswordSaltUusario.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Backend_Gimnacio.Migrations.AddSuscripcion">
+            <inheritdoc />
+        </member>
+        <member name="M:Backend_Gimnacio.Migrations.AddSuscripcion.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Backend_Gimnacio.Migrations.AddSuscripcion.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Backend_Gimnacio.Migrations.AddSuscripcion.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Backend_Gimnacio.Migrations.AddAsistenci">
+            <inheritdoc />
+        </member>
+        <member name="M:Backend_Gimnacio.Migrations.AddAsistenci.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Backend_Gimnacio.Migrations.AddAsistenci.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Backend_Gimnacio.Migrations.AddAsistenci.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Backend_Gimnacio.Migrations.UpdateAsistenci">
+            <inheritdoc />
+        </member>
+        <member name="M:Backend_Gimnacio.Migrations.UpdateAsistenci.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Backend_Gimnacio.Migrations.UpdateAsistenci.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Backend_Gimnacio.Migrations.UpdateAsistenci.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Backend_Gimnacio.Migrations.Pago">
+            <inheritdoc />
+        </member>
+        <member name="M:Backend_Gimnacio.Migrations.Pago.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Backend_Gimnacio.Migrations.Pago.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Backend_Gimnacio.Migrations.Pago.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Backend_Gimnacio.Repositories.EmpleadoRepository.EmpleadoRepository.GetEmpleadosAsync">
+            Obtiene la lista completa de empleados.
+        </member>
+        <member name="M:Backend_Gimnacio.Repositories.EmpleadoRepository.EmpleadoRepository.GetEmpleadoByIdAsync(System.Int32)">
+            Obtiene un empleado por su ID.
+        </member>
+        <member name="M:Backend_Gimnacio.Repositories.EmpleadoRepository.EmpleadoRepository.CreateEmpleadoAsync(Backend_Gimnacio.Models.Empleado)">
+            Crea un nuevo empleado en la base de datos.
+        </member>
+        <member name="M:Backend_Gimnacio.Repositories.EmpleadoRepository.EmpleadoRepository.UpdateEmpleadoAsync(Backend_Gimnacio.Models.Empleado)">
+            Actualiza un empleado existente.
+        </member>
+        <member name="M:Backend_Gimnacio.Repositories.EmpleadoRepository.EmpleadoRepository.DeleteEmpleadoAsync(System.Int32)">
+            Elimina un empleado por su ID.
+        </member>
+        <member name="M:Backend_Gimnacio.Repositories.EmpleadoRepository.EmpleadoRepository.ExistsAsync(System.Int32)">
+            Verifica si un empleado existe por ID.
+        </member>
+    </members>
+</doc>
