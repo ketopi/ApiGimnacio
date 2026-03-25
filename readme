@@ -1,3 +1,27 @@
+## 🚀 Características
+
+* 🔐 Autenticación con JWT
+* 🛡️ Autorización basada en roles y policies dinámicas
+* ⚡ Rate Limiting para control de tráfico
+* 🌐 Versionado de API
+* 📄 Documentación con Swagger
+* 🧠 Arquitectura limpia (Controllers, Services, Repositories)
+* 🗄️ Base de datos PostgreSQL con Entity Framework Core
+* 🔄 Migraciones automáticas en desarrollo
+* ❌ Manejo global de errores con middleware personalizado
+* 🌍 Configuración de CORS para desarrollo
+
+
+
+
+sistema clásico de autorización por Roles y Permisos (RBAC)   ------------------> implementado
+
+RBAC + Claims + Policies dinámicas ------------------> implementado
+
+Rate limiting ------------------> implementado
+
+
+
 Arquitectura por capas
 
 ├── Controllers/
@@ -11,13 +35,7 @@ Arquitectura por capas
 ├── Enums/
 └── Program.cs
 
-sistema clásico de autorización por Roles y Permisos (RBAC)   ------------------> implementado
-
-RBAC + Claims + Policies dinámicas ------------------> implementado
-
-Rate limiting ------------------> implementado
-
-
+Proceso Peppiline
 
 +--------------------+
 |     Front-End      |  ← Cliente (Web, App móvil)
