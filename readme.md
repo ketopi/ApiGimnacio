@@ -1,12 +1,8 @@
-
-
-
 # 🏋️ Gym Management API
 
 **REST API para gestión de gimnasios con seguridad empresarial**
 
 ![.NET](https://img.shields.io/badge/.NET-8.0-512BD4?style=for-the-badge&logo=dotnet&logoColor=white) ![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=csharp&logoColor=white) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white) ![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=black) ![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
-
 
 ---
 
@@ -20,16 +16,16 @@ Diseñada con **arquitectura por capas**, separación de responsabilidades y bue
 
 ## ✨ Características principales
 
-| Categoría | Detalle |
-|-----------|---------|
-| 🔐 **Autenticación** | JWT con configuración por `appsettings` |
-| 🛡️ **Autorización** | RBAC + Claims + Policies dinámicas (`IAuthorizationPolicyProvider`) |
-| ⚡ **Rate Limiting** | Control de tráfico configurable por endpoint |
-| 📄 **Documentación** | Swagger con XML comments y versionado |
-| 🌐 **Versionado de API** | Soporte multi-versión desde la arquitectura base |
-| ❌ **Manejo de errores** | Middleware global de excepciones con respuestas estandarizadas |
-| 🗄️ **Base de datos** | PostgreSQL con Entity Framework Core y Migrations |
-| 🌍 **CORS** | Configuración por entorno (Development / Production) |
+| Categoría                | Detalle                                                             |
+| ------------------------ | ------------------------------------------------------------------- |
+| 🔐 **Autenticación**     | JWT con configuración por `appsettings`                             |
+| 🛡️ **Autorización**      | RBAC + Claims + Policies dinámicas (`IAuthorizationPolicyProvider`) |
+| ⚡ **Rate Limiting**     | Control de tráfico configurable por endpoint                        |
+| 📄 **Documentación**     | Swagger con XML comments y versionado                               |
+| 🌐 **Versionado de API** | Soporte multi-versión desde la arquitectura base                    |
+| ❌ **Manejo de errores** | Middleware global de excepciones con respuestas estandarizadas      |
+| 🗄️ **Base de datos**     | PostgreSQL con Entity Framework Core y Migrations                   |
+| 🌍 **CORS**              | Configuración por entorno (Development / Production)                |
 
 ---
 
@@ -38,9 +34,11 @@ Diseñada con **arquitectura por capas**, separación de responsabilidades y bue
 Este proyecto implementa un modelo de seguridad en dos capas:
 
 ### 1. RBAC clásico (Roles y Permisos)
+
 Control de acceso basado en roles asignados al usuario. Cada rol agrupa un conjunto de permisos que determinan las acciones disponibles.
 
 ### 2. RBAC + Claims + Policies dinámicas
+
 Las políticas de autorización se generan **en tiempo de ejecución** mediante un `IAuthorizationPolicyProvider` personalizado, eliminando la necesidad de declarar cada política de forma estática.
 
 ```csharp
@@ -51,7 +49,7 @@ builder.Services.AddSingleton<IAuthorizationHandler, PermisoHandler>();
 
 ---
 
-## 🏗️ Arquitectura
+## 🏗️ Arquitectura por capas
 
 ```
 Backend_Gimnacio/
@@ -62,7 +60,7 @@ Backend_Gimnacio/
 ├── DTOs/               → Objetos de transferencia de datos
 ├── Data/               → DbContext y configuración EF Core
 ├── Extensions/         → Métodos de extensión para Program.cs
-├── Middleware/         → Manejo global de excepciones
+├── Middleware/         → Manejo de Middlewares
 ├── Security/
 │   ├── Policies/       → PermisoPolicyProvider (policies dinámicas)
 │   └── Handlers/       → PermisoHandler (lógica de validación)
@@ -70,57 +68,12 @@ Backend_Gimnacio/
 └── Program.cs          → Composición de servicios y pipeline
 ```
 
-
-
 ### Pipeline de Middleware
 
 ```
 Request → GlobalExceptionHandler → HTTPS Redirect → CORS
         → RateLimiter → Authentication (JWT) → Authorization → Controller
 ```
-
----
-
-## 🚀 Comenzar
-
-### Prerrequisitos
-
-- [.NET 8 SDK](https://dotnet.microsoft.com/download)
-- [PostgreSQL](https://www.postgresql.org/download/)
-
-### Configuración
-
-1. **Clonar el repositorio**
-   ```bash
-   git clone https://github.com/tu-usuario/Backend_Gimnacio.git
-   cd Backend_Gimnacio
-   dotnet run 
-   ```
-
-2. **Configurar variables en `appsettings.Development.json`**
-   ```json
-   {
-     "ConnectionStrings": {
-       "DefaultConnection": "Host=localhost;Database=gimnacio_db;Username=tu_usuario;Password=tu_password"
-     },
-     "JwtSettings": {
-       "SecretKey": "tu-clave-secreta-segura",      
-     }
-   }
-   ```
-
-3. **Restaurar dependencias y ejecutar**
-   ```bash
-   dotnet restore
-   dotnet run
-   ```
-
-   > Las migraciones se aplican automáticamente al iniciar en entorno de desarrollo.
-
-4. **Acceder a Swagger**
-   ```
-   https://localhost:{puerto}/swagger
-   ```
 
 ---
 
@@ -140,5 +93,5 @@ Request → GlobalExceptionHandler → HTTPS Redirect → CORS
 
 Desarrollado como proyecto de práctica para consolidar habilidades en backend con .NET.
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/tu-perfil)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/kevin-torrez-pillco-513770323)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ketopi)
